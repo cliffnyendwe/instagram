@@ -1,0 +1,121 @@
+
+{%extends 'main_pages/base.html'%}
+{% load bootstrap4 %}
+{% block content %}
+{{block.super}}
+
+<header>
+
+    <div class="container">            
+            <div class="profile-image">
+
+                <img src="{{profile.profile.Profile_photo.url}}" width="120px" height="120px " alt="" class="img-responsive">
+
+            </div>
+
+            <div class="profile-user-settings">
+
+                <h1 class="profile-user-name">{{user.username}}</h1>
+                
+                <a href="{% url 'edit_profile' %}"><button class="btn profile-edit-btn">Edit Profile</button></a>
+                {% if user.is_authenticated %}
+                <ul>
+                    <li class="dropdown btn profile-settings-btn" style="list-style:none;" aria-label="profile settings">
+                        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
+                            aria-expanded="false"><i class="fas fa-cog" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{% url 'home_page'%}">Home</a>
+                            </li>
+
+                            <li>
+                                <a href="/accounts/password/change">Change Password</a>
+                            </li>
+                            <li>
+                                <a href="/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                {% else %}
+                <li>
+                    <a class='btn btn-default' href="/accounts/login">Login</a>
+                </li>
+
+            </div>
+            {% endif %}
+            
+            <div class="profile-stats">
+
+                <ul>
+                    <li><span class="profile-stat-count">{{profile.user.images|length}}</span> posts</li>
+                    <li><span class="profile-stat-count">0</span> followers</li>
+                    <li><span class="profile-stat-count">0</span> following</li>
+                </ul>
+
+            </div>
+
+            <div class="profile-bio">
+
+                <p><span class="profile-real-name">{{user.username}}</span>  <br> {{user.profile.Bio}}</p>
+
+            </div>
+
+        </div>
+        <!-- End of profile section -->
+        <button class="btn profile-edit-btn" data-toggle="modal" data-target="#myModal{{user.id}}">Add Post</button>
+
+</header>
+
+<main>
+
+    <div class="container">
+                {% for data in images %}
+            <div class="gallery-item" tabindex="0">
+
+                <img src="{{data.Image.url}}" class="gallery-image"
+                    alt="" class="img-responsive">
+
+                    <ul>
+                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
+                                aria-hidden="true"></i> 56</li>
+                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment"
+                                aria-hidden="true"></i> 2</li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor%}
+            
+        <!-- End of gallery -->
+
+        <div class="loader"></div>
+
+    <!-- End of container -->
+
+</main>
+<div class="modal" tabindex="-1" id="myModal{{user.id}}" role="dialog">
+    <div class="modal-dialog" role="document" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Share captured moments with Friends and Family all over.</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'upload_image' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% bootstrap_form uploadform %}
+                    <input type="submit" class="btn btn-success btn-lg" value="Upload Status">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger btn-bg" data-dismiss="modal" data-toggle="tooltip"
+                    data-placement="right" title="Close Single Image">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form.media }}
+{% endblock %}

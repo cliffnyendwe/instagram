@@ -1,0 +1,70 @@
+{%extends "registration/base.html"%} {% load bootstrap4 %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Empty div -->
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <img src="../../static/images/phones.png" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            {% if form.errors %}
+            <p> Check your information </p>
+            {% endif %}
+            <div class="card" id="user">
+
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8" style="text-align: center; color: dimgray;">
+                            <img src="../../static/images/name.png" width="200px;" height="60px;" class="img-responsive"
+                                style="margin-left: 0px;"><br>
+                            Sign up to see photos and videos of your friends.
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+
+                <div class="card-body">
+
+                    <form action="/accounts/register/" method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-sm" value="Sign Up" style="background-color:#3897f0;padding-left: 110px;padding-right: 110px;">
+                        </div>
+
+                        <input type="hidden" name="next" value="{{next}}">
+
+                    </form>
+
+                </div>
+                <div class="card-footer text-center " id="footer">
+
+                    By signing up, you agree to our
+                    <br>
+                    <a href="https://help.instagram.com/581066165581870" target="blank" style="color:gray">Terms</a>,
+                    <a href="https://help.instagram.com/519522125107875" target="blank" style="color:gray">Data Policy</a>
+                    and<br><a href="https://help.instagram.com/1896641480634370?ref=ig" target="blank" style="color:gray">Cookies
+                        Policy.</a>
+
+
+                </div>
+                <div class="card text-center" id="on">
+                    <p>Open an account now? <a href="/accounts/login/?next=/">sign-in</a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- empty div -->
+    <div class="col-md-4"></div>
+</div>
+{% endblock %}
