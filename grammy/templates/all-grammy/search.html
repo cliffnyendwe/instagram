@@ -1,8 +1,7 @@
-
 {% extends 'all-grammy/base.html' %}
 
 {% block content %}
-<div class="container">
+<div class="container top">
     <div class="row">
         <div class="col-md-12 text-center">
             <h2 class="font2">Search results for {{message}}</h2>
@@ -18,12 +17,12 @@
                 <img src="../../static/images/avatar.png" alt="avatar" height="40px" width="40px">
                 {% endif %}
                 <p class="username">{{user.user.username}} </p>
-                <p><a class="btn btn-info" href="{% url 'profile' username=user.user.username %}">View Profile</a></p>
+                <p><a class="btn btn-primary" href="{% url 'profile' username=user.user.username %}">View Profile</a></p>
             </div>
             {% endfor %}
         {% else %} 
             <div class="col-md-12 text-center">
-                <h4 class="font1">No match found {{message}} </h4>
+                <h4 class="font1">No results for {{message}} </h4>
             </div>
         {% endif %}
     </div>

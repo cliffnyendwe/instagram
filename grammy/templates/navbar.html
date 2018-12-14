@@ -1,61 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Image and text -->
+<nav style="background-color: #00897b ">
+    <a class="navbar-brand" href="{% url 'index_page' %}">
+    </a>
+    <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search' %}">
+        <input type="text" class="form-control my-2 my-sm-0 search-input" name="search" placeholder="Search username" id="search">
+    </form>
+    <div class="row" id="icon">
+        <div class="col-md-3">
+            <a href=""><i class="far fa-compass" style="font-size:20px;"></i></a>
+        </div>
+        &nbsp; &nbsp;
+        <div class="col-md-3">
+            <a href=""><i class="far fa-heart" style="font-size:20px;"></i></a>
+        </div>
+        &nbsp; &nbsp;
+        <div class="col-md-3">
+            <a href="{% url 'profile' username=request.user %}"><i class="far fa-user" style="font-size:20px;">{{user}}</i></a>
+        </div>
+    </div>
 
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-
-<body>
-    <nav class="navbar navbar-inverse" style="background-color:#00b8d4">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="btn btn-outline-warning" style="font-size:x-large" href="{% url 'index_page' %}">Instagram</a></div>
-            <!-- Adding a search form  -->
-            <div class="col-sm-4 col-md-4 navbar-right">
-                <form>
-                    <div class="input-group" style="font-size:x-large">
-                        <input type="text" class="form-control" style="font-size:x-large" placeholder="Enter username" name="article">
-                        <button class="btn btn-primary" type="submit"></button>
-                    </div>
-
-                </form>
-            </div>
-            <!-- search form end -->
-
-            <!--The search form above-->
-            <div class="col-sm-6 col-md-6">
-                {% if user.is_authenticated %}
-                <ul>
-                    <li class="dropdown" style="list-style-type: none">
-                        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
-                            aria-expanded="false">Account
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{%url 'index_page'%}">Home</a>
-                            </li>
-
-                            <li>
-                                <a href="/accounts/password/change">Change Password</a>
-                            </li>
-                            <li>
-                                <a href="/logout">Logout</a>
-                            </li>
-                        </ul>
+    <div class="col-sm-6 col-md-6">
+        {% if user.is_authenticated %}
+        <ul>
+            <li class="dropdown" style="list-style-type: none;font-size: x-large;">
+                <a style="font-size:large" href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="{%url 'index_page'%}">Home</a>
+                    </li>
+               
+                    <li>
+                        <a href="/accounts/password/change">Change Password</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
                     </li>
                 </ul>
-                {% else %}
-                <li>
-                    <a class='btn btn-default' href="/accounts/login">Login</a>
-                </li>
+            </li>
+        </ul>
+        {% else %}
+        <li>
+            <a class='btn btn-default' href="/accounts/login">Login</a>
+        </li>
 
-                {% endif %}
-            </div>
-        </div>
-    </nav>
-</body>
+        {% endif %}
+    </div>
 
-</html>
+</nav>

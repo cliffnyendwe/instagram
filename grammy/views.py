@@ -5,18 +5,18 @@ from .models import Image,Profile
 from .forms import ProfileForm, ImageForm, CommentForm
 from django.contrib.auth.models import User
 
-
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def index(request):
     image = Image.objects.all()
-    return render(request, 'index.html',{'image':image})
+    
+    return render(request, 'all-grammy/index.html',{'image':image})
 
 @login_required(login_url='/accounts/login/')
-def profile(request, id):
+def profile(request, username):
     uploadform= ImageForm
     image = Image.objects.all()
-    profile = User.objects.get(id=id)
+    profile = User.objects.get(username=username)
    
     try:
         profile_details = Profile.get_by_id(profile.id)
@@ -40,7 +40,7 @@ def edit(request):
             return redirect('edit_profile')
     else:
         form = ProfileForm()
-    return render(request, 'profile.html', {'form':form})
+    return render(request, 'all-grammy/profile.html', {'form':form})
     '''
     logs out current user from account
     '''
@@ -92,4 +92,4 @@ def one_image(request,image_id):
             comment.user = request.user
             comment.image = image
             comment.save()
-    return redirect('home_page')
+    return redirect('index_page')
