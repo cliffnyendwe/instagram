@@ -2,7 +2,7 @@
 {%extends 'all-grammy/base.html'%}
 {% load bootstrap4 %}
 {% block content %}
-
+{{block.super}}
 
 <header>
 
@@ -49,7 +49,7 @@
             <div class="profile-stats">
 
                 <ul>
-                    <li><span class="profile-stat-count">{{profile.user.images|length}}</span> posts</li>
+                    <li><span class="profile-stat-count" style="width: 500px;height: 300px;;">{{profile.user.images|length}}</span> posts</li>
                     <li><span class="profile-stat-count">0</span> followers</li>
                     <li><span class="profile-stat-count">0</span> following</li>
                 </ul>
@@ -79,7 +79,7 @@
 
                     <ul>
                         <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-                                aria-hidden="true"></i> 56</li>
+                                aria-hidden="true"></i>4</li>
                         <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment"
                                 aria-hidden="true"></i> 2</li>
                     </ul>
