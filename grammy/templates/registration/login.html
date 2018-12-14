@@ -14,17 +14,13 @@
                 <div class="card-header text-center" id="login">
                     <div class="row">
                         <div class="col-md-2">
-                            <div class="col-md-8">
-                                <img src="../../static/images/name.png" width="200px;" height="60px;" class="img-responsive"
-                                    style="margin-left: 50px;">
-                            </div>
                         </div>
                         <div class="col-md-4"></div>
                     </div>
                     <div class="card-body">
 
                         <form action="/accounts/login/" method="post">
-                            {% csrf_token %}
+                            <p>{% csrf_token %}</p>
                             {% bootstrap_form form%}
 
                             <div class="form-group">
@@ -36,7 +32,7 @@
                         </form>
 
                     </div>
-                    <p>Don't have an account? <a href="/accounts/register/">sign-up</a></p>
+                    <p style="color:salmon">Don't have an account? <a href="/accounts/register/">sign-up</a></p>
                 </div>
             </div>
         </div>
@@ -45,14 +41,6 @@
 </div>
 <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-2">
-        <a href="https://itunes.apple.com/app/instagram/id389801252?mt=8&vt=lo" target="blank"><img src="../../static/images/store1.png"
-                class="img-responsive" width="170px" height="60"></a>
-    </div>
-    <div class="col-md-2">
-        <a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb%26utm_campaign%3DloginPage%26ig_mid%3DW2MuQwAEAAGG4d3Vg8dWtULLuFZ4%26utm_content%3Dlo%26utm_medium%3Dbadge"
-            target="blank"><img src="../../static/images/store2.png" class="img-responsive" width="160px" height="60"></a>
-    </div>
     <div class="col-md-4"></div>
 </div>
 {% endblock %}

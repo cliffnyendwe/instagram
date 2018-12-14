@@ -13,10 +13,10 @@ def index(request):
     return render(request, 'index.html',{'image':image})
 
 @login_required(login_url='/accounts/login/')
-def profile(request, username):
+def profile(request, id):
     uploadform= ImageForm
     image = Image.objects.all()
-    profile = User.objects.get(username=username)
+    profile = User.objects.get(id=id)
    
     try:
         profile_details = Profile.get_by_id(profile.id)

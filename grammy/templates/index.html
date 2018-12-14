@@ -1,14 +1,16 @@
 {%extends 'all-grammy/base.html'%}
 {% block content %}
 {{block.super}}
+
 <div class="container-fluid">
+    <h3>INSTAGRAM</h3>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-6">
             {% for item in image %}
             <div class="card mb-3">
                 <div class="card-header">
-                    <a href="profile/{{item.user.username}}/">
+                    <a href="profile/{{item.user.id}}/">
                         <div class="row">
                             <div class="">
                                 <img src="{{item.profile.Profile_photo.url}}" alt="img" width="50px" height="50px"
@@ -20,7 +22,9 @@
                         </div>
                     </a>
                 </div>
-                <img class="card-img-top img-responsive" src="{{item.Image.url}}" alt="Card image cap" />
+                {% for item in image %}
+                <img class="card-img-top img-responsive" src="{{item.Image.url}}" style="height:300px;width:450px" alt="Card image cap" />
+
                 <div class="card-body">
                     <div class="row" id="like">
                         <div class="">
@@ -30,12 +34,11 @@
                             </span>
 
                         </div>
-                        &nbsp; &nbsp;
                         <div class="comnt">
                             <a href=""><i class="fa fa-comment" style="font-size:20px;"></i></a>
                         </div>
                     </div>
-
+                    {% endfor %}
                     <p><strong>{{item.user.username}}</strong> {{item.Image_caption}}</p>
                     <p class="card-text" style="font-size:14px;"><small class="text-muted">Uploaded
                             {{item.pub_date|timesince}}</small></p>
@@ -60,12 +63,9 @@
 
                             </form>
                         </div>
-                        <div class="hidden-data {{ item.pk }}">
-                            <span>{{ item.pk }}</span>
-                        </div>
                     </section>
                     {% endif %}
-                </div>
+
             </div>
 
             {% endfor %}

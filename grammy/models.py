@@ -7,7 +7,7 @@ import datetime as dt
         
 class Profile(models.Model):
     Profile_photo = models.ImageField(upload_to = 'images/',blank=True)
-    Bio = models.TextField(max_length = 50)
+    Bio = models.TextField(max_length = 250)
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
 
     def save_profile(self):
@@ -31,7 +31,7 @@ class Profile(models.Model):
 class Image(models.Model):
     Image = models.ImageField(upload_to = 'images/')
     Image_name = models.CharField(max_length =30)
-    Image_caption = models.TextField(max_length =40)
+    Image_caption = models.TextField(max_length =100)
     Likes = models.CharField(max_length =20,blank =True)
     profile = models.ForeignKey(Profile, null = True,related_name='image')
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
