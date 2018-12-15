@@ -17,7 +17,7 @@
 
                 <h1 class="profile-user-name">{{user.username}}</h1>
                 
-                <a href="{% url 'edit_profile' %}"><button class="btn profile-edit-btn">Edit Profile</button></a>
+                <a href="{% url 'edit' %}"><button class="btn profile-edit-btn">Edit Profile</button></a>
                 {% if user.is_authenticated %}
                 <ul>
                     <li class="dropdown btn profile-settings-btn" style="list-style:none;" aria-label="profile settings">

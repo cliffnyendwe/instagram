@@ -37,10 +37,10 @@ def edit(request):
             edit = form.save(commit=False)
             edit.user = request.user
             edit.save()
-            return redirect('edit_profile')
+            return redirect('index_page')
     else:
         form = ProfileForm()
-    return render(request, 'all-grammy/profile.html', {'form':form})
+    return render(request, 'all-grammy/edit_profile.html', {'form':form})
     '''
     logs out current user from account
     '''
