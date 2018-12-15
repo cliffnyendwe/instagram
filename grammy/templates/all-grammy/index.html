@@ -8,14 +8,9 @@
         <div class="col-md-2"></div>
         <div class="col-md-6">
             {% for item in image %}
-            <div class="card mb-3">
+            <div class="card">
                 <div class="card-header">
                     <a href="profile/{{item.user.username}}/">
-                        <div class="row">
-                            <div class="">
-                                <img src="{{item.profile.Profile_photo.url}}" alt="img" width="50px" height="50px"
-                                    class="img-responsive">
-                            </div>
                             <div class="col-md-2" style="margin-top: 10px;font-weight: bold;">
                                 <h4 class="card-title">{{item.user.username}}</h4>
                             </div>
@@ -33,9 +28,6 @@
                                 </span>Likes
                             </span>
 
-                        </div>
-                        <div class="comnt">
-                            <a href=""><i class="fa fa-comment" style="font-size:20px;"></i></a>
                         </div>
                     </div>
                     {% endfor %}
