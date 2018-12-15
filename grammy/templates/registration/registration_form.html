@@ -1,4 +1,4 @@
-{%extends "registration/base.html"%} 
+{%extends "registration/base.html"%}
 {% load bootstrap4 %}
 {% block content %}
 <div class="container-fluid">
@@ -21,45 +21,56 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-2"></div>
-                            <h3 style="color:rosybrown">Sign up to see photos and videos of your friends.</h3>
-                        </div>
+                        <h3 style="color:rosybrown">Sign up to see photos and videos of your friends.</h3>
                     </div>
-                    <div class="col-md-2"></div>
                 </div>
-
-                <div class="card-body">
-
-                    <form action="/accounts/register/" method="post">
-                        {% csrf_token %}
-                        {% bootstrap_form form %}
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary btn-sm" value="Sign Up" style="background-color:#3897f0;padding-left: 110px;padding-right: 110px;">
-                        </div>
-
-                        <input type="hidden" name="next" value="{{next}}">
-
-                    </form>
-
-                </div>
-                <div class="card-footer text-center ">
-
-                   <h3> By signing up, you agree to our</h3>
-                    <br>
-                    <a href="https://help.instagram.com/581066165581870" target="blank" style="color:gray">Terms</a>,
-                    <a href="https://help.instagram.com/519522125107875" target="blank" style="color:gray">Data Policy</a>
-                    and<br><a href="https://help.instagram.com/1896641480634370?ref=ig" target="blank" style="color:gray">Cookies
-                        Policy.</a>
-
-
-                </div>
-                <div class="card text-center">
-                    <p>Open an account now <a href="/accounts/login/?next=/">sign-in</a></p>
-                </div>
+                <div class="col-md-2"></div>
             </div>
 
+            <div class="card-body">
+
+                <form action="/accounts/register/" method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-outline-primary " value="Sign Up" style="width:110px;text-align: center;margin-left: 40%;font-size: x-large;">
+                    </div>
+
+                    <input type="hidden" name="next" value="{{next}}">
+
+                </form>
+
+            </div>
+            <div class="card-footer text-center ">
+
+                <h3> By signing up, you agree to our</h3>
+                <br>
+                <a href="https://help.instagram.com/581066165581870" target="blank" style="color:gray">Terms</a>,
+                <a href="https://help.instagram.com/519522125107875" target="blank" style="color:gray">Data Policy</a>
+                and<br><a href="https://help.instagram.com/1896641480634370?ref=ig" target="blank" style="color:gray">Cookies
+                    Policy.</a>
+
+
+            </div>
+            <div class="card text-center">
+                <p>Open an account now <a href="/accounts/login/?next=/">sign-in</a></p>
+            </div>
+            <div class="app-download-links">
+                <p>Get the app.</p>
+                <a href="#"><img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-appstore.png
+     https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-appstore.png
+     "
+                        alt="Download on App Store" /></a>
+                <a href="#"><img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-googleplay.png
+     https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-googleplay.png
+     "
+                        alt="Download on Google Play" /></a>
+            </div>
         </div>
+
     </div>
-    <!-- empty div -->
-    <div class="col-md-4"></div>
+</div>
+<!-- empty div -->
+<div class="col-md-4"></div>
 </div>
 {% endblock %}

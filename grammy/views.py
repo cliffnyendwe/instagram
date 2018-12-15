@@ -9,7 +9,6 @@ from django.contrib.auth.models import User
 @login_required(login_url='/accounts/login/')
 def index(request):
     image = Image.objects.all()
-    
     return render(request, 'all-grammy/index.html',{'image':image})
 
 @login_required(login_url='/accounts/login/')
@@ -23,7 +22,7 @@ def profile(request, username):
     except:
         profile_details = Profile.filter_by_id(profile.id)
     images = Image.get_profile_images(profile.id)
-    title = f'@{profile.username} Instagram photos and videos'
+    title = f'@{profile.username} View photos and videos'
 
     return render(request, 'all-grammy/profile.html', {'title':title, 'profile':profile, 'profile_details':profile_details, 'images':images,'uploadform':uploadform,'image':image})
     '''
@@ -37,7 +36,7 @@ def edit(request):
             edit = form.save(commit=False)
             edit.user = request.user
             edit.save()
-            return redirect('index_page')
+            return redirect('profile')
     else:
         form = ProfileForm()
     return render(request, 'all-grammy/edit_profile.html', {'form':form})
