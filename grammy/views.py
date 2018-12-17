@@ -64,7 +64,7 @@ def search(request):
 
         return render(request, 'all-grammy/search.html',{'message':message, 'profile':profile})
     else:
-        message = 'Enter search term'
+        message = 'Enter term to search'
         return render(request, 'all-grammy/search.html', {'message':message})
 
 @login_required(login_url='/accounts/login')
