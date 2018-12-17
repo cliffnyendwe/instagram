@@ -21,7 +21,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-2"></div>
-                        <h3 style="color:rosybrown">Sign up to see photos and videos of your friends.</h3>
+                        <h2>Latest Instagram</h2>
                     </div>
                 </div>
                 <div class="col-md-2"></div>
@@ -29,7 +29,7 @@
 
             <div class="card-body">
 
-                <form class="btn-btn-outline-primary" action="/accounts/register/" method="post">
+                <form  action="/accounts/register/" method="post">
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     <div class="form-group">

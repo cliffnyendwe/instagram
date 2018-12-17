@@ -19,8 +19,8 @@
                     </div>
                     <div class="card-body">
 
-                        <form class="btn btn-outline-primary" action="/accounts/login/" method="post">
-                            <p>{% csrf_token %}</p>
+                        <form  action="/accounts/login/" method="post">
+                            {% csrf_token %}
                             {% bootstrap_form form%}
 
                             <div class="form-group">

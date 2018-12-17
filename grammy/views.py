@@ -36,7 +36,7 @@ def edit(request):
             edit = form.save(commit=False)
             edit.user = request.user
             edit.save()
-            return redirect('profile')
+            return redirect('index_page')
     else:
         form = ProfileForm()
     return render(request, 'all-grammy/edit_profile.html', {'form':form})
