@@ -10,7 +10,7 @@
         
             <div class="card">
 
-                <a style="font-size:x-large;" class="btn btn-outline-primary" href="{% url 'profile' username=request.user %}">{{user}}</a>
+                <a style="font-size:x-large;width:25%;" class="btn btn-outline-primary" href="{% url 'profile' username=request.user %}">{{user}}</a>
                 {% for item in image %}
 
                 <a href="profile/{{item.user.username}}/">
@@ -21,7 +21,7 @@
                 </a>
 
                 {% for item in image %}
-                <img  class="card-img-top img-responsive" src="{{item.Image.url}}" style="height:350px;width:450px;" alt="Card image cap" />
+                <img  class="card-img-top img-responsive" src="{{item.Image.url}}" style="height:350px;width:450px;border-radius:50%;" alt="Card image cap" />
 
                 <div class="card-body">
                     <div class="row" id="like">
