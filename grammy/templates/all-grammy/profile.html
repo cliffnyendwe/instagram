@@ -3,94 +3,63 @@
 {% block content %}
 {{block.super}}
 
-<div class="container">
-    <img src="{{profile.profile.Profile_photo.url}}" width="400px" height="300px;border-radius: 30%; " alt="" class="img-responsive">
+<div class="container-fluid">
+
+    <img src="{{profile.profile.Profile_photo.url}}" width="400px" height="300px;" alt="" class="img-responsive">
     <div class="profile-user-settings">
 
         <h1 class="profile-user-name" style="font-family: 'Charm', cursive;">{{user.username}}</h1>
 
-        <a href="{% url 'edit' %}"><button class="btn btn-outline-primary">Edit Profile</button></a>
-        <div class="row">
-            {% if user.is_authenticated %}
-            <div class="col-md4">
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="{% url 'profile' request.user%}">Home</a>
-                        </li>
+        <a href="{% url 'edit' %}"><button class="btn btn-outline-primary" style="color:whitesmoke">Edit Profile</button></a>
 
-                        <li>
-                            <a href="/accounts/password/change">Change Password</a>
-                        </li>
-                        <li>
-                            <a href="/logout">Logout</a>
-                        </li>
-                    </ul>
-                    </li>
-                </ul>
-                {% else %}
-                <li>
-                    <a class='btn btn-default' href="/accounts/login">Login</a>
-                </li>
+        <ul style="list-style-type: none;">
+            <li><span>28</span> followers</li>
+            <li><span>32</span> following</li>
+        </ul>
 
-            </div>
-            {% endif %}
+        <p><span class="profile-real-name">{{user.username}}</span> <br> {{user.profile.Bio}}</p>
+    </div>
 
-            <ul style="list-style-type: none;">
-                <li><span class="profile-stat-count" style="width: 400px;height: 200px;border-radius:40%">{{profile.user.images|length}}</span>
-                    posts</li>
-                <li><span>28</span> followers</li>
-                <li><span>32</span> following</li>
-            </ul>
+    <!-- End of profile section -->
+    <button class="btn btn-outline-primary" style="color:whitesmoke" data-toggle="modal" style="height: 50px;"
+        data-target="#myModal{{user.id}}">Add
+        Post</button>
 
-            <p><span class="profile-real-name">{{user.username}}</span> <br> {{user.profile.Bio}}</p>
-        </div>
+    {% for data in images %}
+    <img src="{{data.Image.url}}" style="width:400px;height:300px;" class="gallery-image" alt="" class="img-responsive">
 
-        <!-- End of profile section -->
-        <button class="btn btn-outline-primary" data-toggle="modal" style="height: 50px;" data-target="#myModal{{user.id}}">Add Post</button>
+    <ul style="list-style-type: none;">
+        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span>6</li>
+        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span>4</li>
+    </ul>
 
-        <div class="container">
-            {% for data in images %}
-            <div class="gallery-item" tabindex="0">
+    {% endfor%}
 
-                <img src="{{data.Image.url}}" style="width:400px;height:300px;border-radius:45%" class="gallery-image"
-                    alt="" class="img-responsive">
+    <!-- End of gallery -->
 
-                <ul  style="list-style-type: none;">
-                    <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span>6</li>
-                    <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span>4</li>
-                </ul>
-            </div>
-        </div>
-        {% endfor%}
+    <div class="loader"></div>
 
-        <!-- End of gallery -->
+    <!-- End of container -->
 
-        <div class="loader"></div>
-
-        <!-- End of container -->
-
-        <div class="modal" tabindex="-1" id="myModal{{user.id}}" role="dialog">
-            <div class="modal-dialog" role="document" id="modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4>Share captured moments with Friends and Family all over.</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{% url 'upload_image' %}" method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {% bootstrap_form uploadform %}
-                            <input type="submit" class="btn btn-success btn-lg" value="">
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger " data-dismiss="modal" data-toggle="tooltip"
-                            data-placement="right" title="Close Single Image">Close</button>
-                    </div>
+    <div class="modal" tabindex="-1" id="myModal{{user.id}}" role="dialog">
+        <div class="modal-dialog" role="document" id="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Share captured moments with Friends and Family all over.</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <div class="modal-body">
+                    <form action="{% url 'upload_image' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% bootstrap_form uploadform %}
+                        <input type="submit" class="btn btn-success btn-lg" value="">
+                    </form>
+                </div>
+
             </div>
         </div>
-
-        {% endblock %}
+    </div>
+</div>
+{% endblock %}

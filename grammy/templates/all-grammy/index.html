@@ -2,61 +2,63 @@
 {% block content %}
 {{block.super}}
 
-<div class="container-fluid" >
-    <div class="card" >
-        <h1 class="animated bounceInUp" style="margin-left: 35%;font-family: 'Lobster', cursive;
+<div class="container-fluid">
+
+    <h1 class="animated bounceInUp" style="text-align:center;font-family: 'Lobster', cursive;
     ">INSTAGRAM</h1>
-        <a style="font-size:x-large;width:150px;" class="btn btn-outline-primary" href="{% url 'profile' username=request.user %}">{{user}}</a>
-        {% for item in image %}
+    <div class="row d-flex justify-content-center">
+        
+            <div class="card">
 
-        <a href="profile/{{item.user.username}}/">
-            <div class="col-md-2" style="font-size: x-large;font-family: 'Lobster', cursive;">
-                            
-                <h4>{{item.user.username}}</h4>
-            </div>
-        </a>
+                <a style="font-size:x-large;" class="btn btn-outline-primary" href="{% url 'profile' username=request.user %}">{{user}}</a>
+                {% for item in image %}
 
-        {% for item in image %}
-        <img class="card-img-top img-responsive" src="{{item.Image.url}}" style="height:350px;width:450px;"
-            alt="Card image cap" />
+                <a href="profile/{{item.user.username}}/">
+                    <div style="font-size: x-large;font-family: 'Lobster', cursive;">
 
-        <div class="card-body">
-            <div class="row" id="like">
-                <div class="">
-                    <span class="likes">
-                    </span><br>5
-                    </span>Likes
-                    </span>
-                </div>
-            </div>
-            {% endfor %}
-            <p><strong>{{item.user.username}}</strong> {{item.Image_caption}}</p>
-            <p class="card-text" style="font-size:x-large;color:black;"><small class="text-muted">Uploaded
-                    {{item.pub_date|timesince}}</small></p>
-            <h5><strong>Comments</strong></h5>
-            <a class="view-more"></a>
-            {% for comment in item.comment.all %}
-            <li class="comment-list__comment" style="list-style: none;">
-                <a href="{% url 'profile' }" class="user">
-                    <strong>{{ comment.user.username }}</strong>
+                        <h4>{{item.user.username}}</h4>
+                    </div>
                 </a>
-                <span class="comment">{{ comment.name }}</span>
-            </li>
-            {% endfor %}
 
-            {% if request.user.is_authenticated %}
-            <section class="input-row">
-                <i class="fa # submit-like" aria-hidden="true"></i>
-                <div class="comment-input-wrapper">
-                    <form action="{% url 'comment' image_id=item.id %}" method="post">
-                        {% csrf_token %}
-                        <input class="add-comment" name="name" id="comment{{item.id}}" type="text" placeholder="Comment">
-                    </form>
+                {% for item in image %}
+                <img  class="card-img-top img-responsive" src="{{item.Image.url}}" style="height:350px;width:450px;" alt="Card image cap" />
+
+                <div class="card-body">
+                    <div class="row" id="like">
+                        <div class="">
+                            <span class="likes">
+                            </span><br>5
+                            </span>Likes
+                            </span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <p><strong>{{item.user.username}}</strong> {{item.Image_caption}}</p>
+                    <p class="card-text" style="font-size:x-large;color:black;"><small class="text-muted">Uploaded
+                            {{item.pub_date|timesince}}</small></p>
+                    <h5><strong>Comments</strong></h5>
+                    {% for comment in item.comment.all %}
+                    <li class="comment-list__comment" style="list-style: none;">
+                        <a href="{% url 'profile' }" class="user">
+                            <strong>{{ comment.user.username }}</strong>
+                        </a>
+                        <span class="comment">{{ comment.name }}</span>
+                    </li>
+                    {% endfor %}
+
+                    {% if request.user.is_authenticated %}
+                    <section class="input-row">
+                        <div class="comment-input-wrapper">
+                            <form action="{% url 'comment' image_id=item.id %}" method="post">
+                                {% csrf_token %}
+                                <input class="add-comment" name="name" id="comment{{item.id}}" type="text" placeholder="Comment">
+                            </form>
+                        </div>
+                    </section>
+                    {% endif %}
                 </div>
-            </section>
-            {% endif %}
-        </div>
-        {% endfor %}
+                {% endfor %}
+            </div>
     </div>
 </div>
 {% endblock %}
