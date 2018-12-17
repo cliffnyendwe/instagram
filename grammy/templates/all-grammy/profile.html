@@ -9,16 +9,10 @@
 
         <h1 class="profile-user-name" style="font-family: 'Charm', cursive;">{{user.username}}</h1>
 
-        <a href="{% url 'edit' %}"><button class="btn profile-edit-btn">Edit Profile</button></a>
+        <a href="{% url 'edit' %}"><button class="btn btn-outline-primary">Edit Profile</button></a>
         <div class="row">
             {% if user.is_authenticated %}
             <div class="col-md4">
-                <ul>
-                    <li class="dropdown btn profile-settings-btn" style="list-style:none;" aria-label="profile settings">
-                        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
-                            aria-expanded="false"><i class="fas fa-cog" aria-hidden="true"></i>
-                        </a>
-                    </li>
                     <ul class="dropdown-menu" role="menu">
                         <li>
                             <a href="{% url 'profile' request.user%}">Home</a>
@@ -41,7 +35,7 @@
             </div>
             {% endif %}
 
-            <ul>
+            <ul style="list-style-type: none;">
                 <li><span class="profile-stat-count" style="width: 400px;height: 200px;border-radius:40%">{{profile.user.images|length}}</span>
                     posts</li>
                 <li><span>28</span> followers</li>
@@ -52,7 +46,7 @@
         </div>
 
         <!-- End of profile section -->
-        <button class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal{{user.id}}">Add Post</button>
+        <button class="btn btn-outline-primary" data-toggle="modal" style="height: 50px;" data-target="#myModal{{user.id}}">Add Post</button>
 
         <div class="container">
             {% for data in images %}
@@ -61,7 +55,7 @@
                 <img src="{{data.Image.url}}" style="width:400px;height:300px;border-radius:45%" class="gallery-image"
                     alt="" class="img-responsive">
 
-                <ul>
+                <ul  style="list-style-type: none;">
                     <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span>6</li>
                     <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span>4</li>
                 </ul>

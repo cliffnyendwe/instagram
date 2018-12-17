@@ -29,7 +29,7 @@
 
             <div class="card-body">
 
-                <form action="/accounts/register/" method="post">
+                <form class="btn-btn-outline-primary" action="/accounts/register/" method="post">
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     <div class="form-group">
@@ -56,7 +56,7 @@
                 <p>Open an account now <a href="/accounts/login/?next=/">sign-in</a></p>
             </div>
             <div class="app-download-links">
-                <p>Get the app.</p>
+                <p  style="text-align: center">Get the app.</p>
                 <a href="#"><img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-appstore.png
      https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-appstore.png
      "

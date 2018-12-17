@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
 
-                        <form action="/accounts/login/" method="post">
+                        <form class="btn btn-outline-primary" action="/accounts/login/" method="post">
                             <p>{% csrf_token %}</p>
                             {% bootstrap_form form%}
 
@@ -32,7 +32,7 @@
                         </form>
 
                     </div>
-                    <p style="color:salmon">Don't have an account? <a href="/accounts/register/">sign-up</a></p>
+                    <p style="color:salmon">Don't have an account? <a class = "btn btn-outline-primary" href="/accounts/register/">sign-up</a></p>
                     <p>Get the app.</p>
                     <a href="#"><img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-appstore.png
          https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-appstore.png

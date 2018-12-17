@@ -6,17 +6,17 @@
     <h1 style="margin-left: 35%;font-family: 'Lobster', cursive;
     ">INSTAGRAM</h1>
 
+    {% for item in image %}
     <div class="row">
         <div class="col-md-6">
-            {% for item in image %}
 
             <a href="profile/{{item.user.username}}/">
-                <div class="col-md-2" style="margin-top: 10px;font-weight: bold;font-size: x-large;font-family: 'Lobster', cursive;
+                <div  style="margin-top: 10px;font-weight: bold;font-size: x-large;font-family: 'Lobster', cursive;
                             ">
                     <h4>{{item.user.username}}</h4>
                 </div>
+            </a>
         </div>
-        </a>
     </div>
     {% for item in image %}
     <img class="card-img-top img-responsive" src="{{item.Image.url}}" style="height:300px;width:450px;border-radius:40%;"
@@ -26,14 +26,14 @@
         <div class="row" id="like">
             <div class="">
                 <span class="likes">
-                    <i class="fa fa-heart" aria-hidden="true" style="font-size:20px;"></i><span class="count"><br>0
+                    <i class="fa fa-heart" aria-hidden="true" style="font-size:20px;"></i><span class="count"><br>5
                     </span>Likes
                 </span>
             </div>
         </div>
         {% endfor %}
         <p><strong>{{item.user.username}}</strong> {{item.Image_caption}}</p>
-        <p class="card-text" style="font-size:large;"><small class="text-muted">Uploaded
+        <p class="card-text" style="font-size:x-large;color:black;"><small class="text-muted">Uploaded
                 {{item.pub_date|timesince}}</small></p>
         <h5><strong>Comments</strong></h5>
         <a class="view-more"></a>
