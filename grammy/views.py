@@ -57,12 +57,11 @@ def view_image(request):
     searching for profile
     '''
 def search(request):
-    if 'name' in request.GET and request.GET['name']:
-        search_term = request.GET.get('name')
+    if 'search' in request.GET and request.GET['search']:
+        search_term = request.GET.get('search')
         profile = Profile.search_user(search_term)
-        message = f'{name}'
-       
-        return render(request, 'all-grammy/search.html',{'message':message, 'profile':profile})
+        message = f'{search_term}'       
+        return render(request, 'all-grammy/search.html',{'message':message, 'profiles':profile})
     else:
         message = 'Enter term to search'
         return render(request, 'all-grammy/search.html', {'message':message})

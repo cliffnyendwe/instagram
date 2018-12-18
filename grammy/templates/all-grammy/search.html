@@ -9,25 +9,17 @@
         </div>
     </div>
     <div class="row">
-        {% if profile %}
-        <h1>Hey</h1>
-            {% for user in profile %}
-            <div class="col-md-3 home-images search-results">
-                {% if user.profile.Profile_photo %}
-                <img src="{{profile_details.Profile_photo.url}}" alt="profile-photo">
-                {% else %}
-
-                {% endif %}
-                <p>{{user.email}}</p>
-                <p class="username">{{user.username}} </p>
-                <p><a class="btn btn-outline-primary" href="{% url 'profile' username=user.user.username %}">View Profile</a></p>
-            </div>
+        {% if profiles %}
+            {% for profile in profiles %}
+                <div class="col-md-3 home-images search-results">
+                    <img src="{{profile.Profile_photo.url}}" alt="profile-photo">
+                    <p>{{profile.email}}</p>
+                    <p class="username">{{profile.user.username}} </p>
+                    <p>{{profile.bio}}</p>
+                </div>
             {% endfor %}
-        {% else %} 
-            <div class="col-md-12 text-center">
-                <h4>No results for {{message}} </h4>
-            </div>
+        {% else %}
+                    <h4>No results for {{message}} </h4>
         {% endif %}
     </div>
-</div>
 {% endblock %}
