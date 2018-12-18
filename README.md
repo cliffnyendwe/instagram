@@ -1,5 +1,5 @@
-# Gallary
-By Cliff Nyendwe, 11/12/2018
+# Instagram
+By Cliff Nyendwe, 17/12/2018
 
 # Django admin username
 Use the username below to get into my admin
@@ -10,15 +10,15 @@ This is my password
 * cliff123
 
 # Description
-Gallary is an application where users can view different types of images based on the categories they have chosed.They can also view images based on the location they have also chosen.
+Instagram is an application where users can view their images/photos once they havve created an account,logged in and .
 
 # Features
 
-* View different photos that interest me.
-* Click on a single photo to expand it and also view the details of the photo. The photo details must appear on a modal within the same route as the main page.
-* Search for different categories of photos. (ie. flowers, Food)
-* Copy a link to the photo to share with my friends.
-* View photos based on the location they were taken.
+* Sign in to the application to start using.
+* Upload my pictures to the application.
+* See my profile with all my pictures.
+* Follow other users and see their pictures on my timeline.
+* Like a picture and leave a comment on it.
 
 # Live Demo
 

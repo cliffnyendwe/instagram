@@ -25,7 +25,7 @@ class Profile(models.Model):
     
     @classmethod
     def search_user(cls, name):
-        userprof = Profile.objects.filter(user__username__icontains = name)
+        userprof = User.objects.filter(username__icontains = name)
         return userprof
 # Create your models here.
 class Image(models.Model):

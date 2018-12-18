@@ -9,15 +9,17 @@
         </div>
     </div>
     <div class="row">
-        {% if profiles %}
+        {% if profile %}
+        <h1>Hey</h1>
             {% for user in profile %}
             <div class="col-md-3 home-images search-results">
-                {% if user.Profile_photo %}
+                {% if user.profile.Profile_photo %}
                 <img src="{{profile_details.Profile_photo.url}}" alt="profile-photo">
                 {% else %}
 
                 {% endif %}
-                <p class="username">{{user.user.username}} </p>
+                <p>{{user.email}}</p>
+                <p class="username">{{user.username}} </p>
                 <p><a class="btn btn-outline-primary" href="{% url 'profile' username=user.user.username %}">View Profile</a></p>
             </div>
             {% endfor %}
