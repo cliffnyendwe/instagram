@@ -22,7 +22,7 @@ Instagram is an application where users can view their images/photos once they h
 
 # Live Demo
 
-Run this url link:https://cliffgallary.herokuapp.com/
+Run this url link:https://cliff-grammy.herokuapp.com/
 
 # Contacts
 To find me, use: cliffnyendwe2018@gmail.com
@@ -64,7 +64,7 @@ whitenoise==4.1.2
 
 # Installation Requirements
 
-* Clone this repo: git clone https://github.com/cliffnyendwe/my-gallary.git
+* Clone this repo: git clone https://github.com/cliffnyendwe/instagram.git
 
 * The repo comes in a zipped or compressed format. Extract to your prefered location and open it.
 
